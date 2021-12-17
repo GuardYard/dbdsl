@@ -25,7 +25,7 @@ class Globals{
 class DbDSLTraverse {
 	
 		def static void main(String[] args) {
-		def path = 'src/main/resources/example.ucd'
+		def path = 'src/main/resources/example.dbdsl'
 		
 		println solution(path)
 	}
