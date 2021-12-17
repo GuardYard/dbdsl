@@ -1,0 +1,3 @@
+include 'org.xtext.miniproject2.dbscript.dsl'
+include 'org.xtext.miniproject2.dbscript.dsl.ide'
+include 'org.xtext.miniproject2.dbscript.dsl.web'

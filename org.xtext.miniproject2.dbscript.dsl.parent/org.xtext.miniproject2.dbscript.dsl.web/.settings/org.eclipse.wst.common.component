@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="org.xtext.miniproject2.dbscript.dsl.web">
+		<property name="context-root" value="org.xtext.miniproject2.dbscript.dsl.web"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/xtext-gen"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/xtend-gen"/>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/org.xtext.miniproject2.dbscript.dsl.ide/org.xtext.miniproject2.dbscript.dsl.ide">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+		<dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/org.xtext.miniproject2.dbscript.dsl/org.xtext.miniproject2.dbscript.dsl">
+			<dependency-type>uses</dependency-type>
+		</dependent-module>
+	</wb-module>
+</project-modules>

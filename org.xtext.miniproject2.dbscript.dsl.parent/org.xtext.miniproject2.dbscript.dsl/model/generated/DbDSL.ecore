@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dbDSL" nsURI="http://www.xtext.org/miniproject2/dbscript/dsl/DbDSL"
+    nsPrefix="dbDSL">
+  <eClassifiers xsi:type="ecore:EClass" name="Database">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tables" upperBound="-1"
+        eType="#//Table" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inserts" upperBound="-1"
+        eType="#//Insert" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Table">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
+        eType="#//AbstractType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimaryKey" eSuperTypes="#//AbstractType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoIncrement" eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Column" eSuperTypes="#//AbstractType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceTable" eType="#//Table"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fkey" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Insert">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//Table"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="var" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Type">
+    <eLiterals name="INTEGER" literal="int"/>
+    <eLiterals name="TEXT" value="1" literal="varchar(255)"/>
+    <eLiterals name="DATE" value="2" literal="datetime"/>
+    <eLiterals name="AUTOINCREMENT" value="3" literal="AutoNumber"/>
+  </eClassifiers>
+</ecore:EPackage>

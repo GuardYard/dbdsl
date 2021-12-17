@@ -1,0 +1,32 @@
+database Table:
+    table Passenger:
+        id PassengerID - int => AutoNumber
+        column FirstName - varchar(255)
+        column LastName - varchar(255)
+        column FlightID - int f(Flight => "FlightID")
+        column TicketID - int f(Ticket => "TicketID")
+    
+    table Flight:
+        id FlightID - int => AutoNumber
+        column DepartureID - int f(Departure => "DepartureID")
+
+    
+    table Departure:
+        id DepartureID - int => AutoNumber
+        column Time - datetime
+    
+    table Ticket:
+        id TicketID - int => AutoNumber
+        column TicketTime - datetime
+
+    
+    table Airport:
+        id AirportID - int => AutoNumber
+        column AirportName- varchar(255)
+    
+    table FlightAirport:
+        id FlightAirportID - int => AutoNumber
+        column AirportID - int f(Airport => "AirportID")
+        column FlightID - int f(Flight => "FlightID")
+    
+    add Airport ("NYC Airport");

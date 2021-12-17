@@ -1,0 +1,37 @@
+grammar org.xtext.miniproject2.dbscript.dsl.DbDSL with org.eclipse.xtext.common.Terminals
+
+generate dbDSL "http://www.xtext.org/miniproject2/dbscript/dsl/DbDSL"
+
+
+Database:
+	'database' name = ID ':'
+		(tables += Table)*
+		(inserts += Insert)*
+;
+
+Table:
+  'table' name = ID ':'
+  		(columns += AbstractType)*
+;
+
+AbstractType:
+	PrimaryKey | Column
+;
+
+PrimaryKey:
+	'id' name = ID '-' type = Type ('=>' autoIncrement = Type)?
+;
+
+Column:
+	'column' name = ID '-' type = Type ('f('sourceTable= [Table] '=>' fkey = STRING ')')?
+;
+
+Insert:
+	"add" table = [Table] '(' (var += STRING)* (',' var += STRING)* ');'
+;
+
+enum Type:
+    INTEGER = 'int' 
+    | TEXT = 'varchar(255)' 
+    | DATE = 'datetime'
+    | AUTOINCREMENT = "AutoNumber";
