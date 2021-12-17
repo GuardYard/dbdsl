@@ -25,14 +25,9 @@ class Globals{
 class DbDSLTraverse {
 	
 		def static void main(String[] args) {
-		def path = 'src/main/resources/example1.ucd'
-//		def path = 'src/main/resources/example2.ucd'
+		def path = 'src/main/resources/example.ucd'
 		
 		println solution(path)
-		/**
-		 * TODO: update your username
-		 */
-		//SubmissionHelper.check_solution('', 'week_19', solution);
 	}
 
 	def static solution = { path ->
@@ -45,7 +40,7 @@ class DbDSLTraverse {
 		
 		Database database = resource.getContents().get(0)
 
-		text += traverse(Database)
+		text += traverse(database)
 		text += "\n"
 		text += Globals.text2
 		text += "\n"
@@ -66,7 +61,7 @@ class DbDSLTraverse {
     String text = ''
 
 	switch (obj) {
-        case Module :
+        case Database :
             text += generate(obj)
             text += traverse(obj.tables)
 			text += traverse(obj.inserts)
@@ -98,7 +93,7 @@ class DbDSLTraverse {
 	    String text = ''
 	    switch (obj) {
 	
-	        case Module :
+	        case Database :
 				text += """CREATE DATABASE ${obj.name};\n"""
 	            break
 				
